@@ -1,4 +1,4 @@
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 struct GradeTooHighException : std::exception
 {
@@ -14,18 +14,19 @@ struct notSigned : std::exception
 {
   const char* what() const throw() {return "not signed\n";}
 };
-ShrubberyCreationForm::ShrubberyCreationForm( void ) : _Sign_Grade(145), _Exec_Grade(137)
+RobotomyRequestForm::RobotomyRequestForm( void ) : _Sign_Grade(72), _Exec_Grade(45)
 {
 	std::cout << "Constructor called" << std::endl;
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) : _target(target), _Sign_Grade(145), _Exec_Grade(137)
+RobotomyRequestForm::RobotomyRequestForm( std::string target ) : _target(target), _Sign_Grade(72), _Exec_Grade(45)
 {
+	std::cout << "Constructor called" << std::endl;
 	return; 
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{
@@ -44,52 +45,52 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     }
 }
 
-void ShrubberyCreationForm::task( void ) const
+void RobotomyRequestForm::task( void ) const
 {
-	std::string filename;
-	filename += _target;
-	filename += "_shrubbery";
-	std::ofstream _target( filename );
-	_target <<  "        tt                                                                                       tttt                                                                                     tttttt                                                                                      || " ; 
+	srand(time(0));
+	if (rand() % 2)
+		std::cout << "BRUIT DE PERCEUSE" << std::endl << _target << " a été robotomisé" << std::endl;
+	else
+		std::cout << "Opération échouée" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &)
+RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &)
 {
 	return ;
 }
 
-ShrubberyCreationForm & ShrubberyCreationForm::operator=( ShrubberyCreationForm const & )
+RobotomyRequestForm & RobotomyRequestForm::operator=( RobotomyRequestForm const & )
 {
 	return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm( void )
+RobotomyRequestForm::~RobotomyRequestForm( void )
 {
 	std::cout << "Destructor called" << std::endl;
 	return;
 }
 /*
-bool ShrubberyCreationForm::getSigned( void ) const
+bool RobotomyRequestForm::getSigned( void ) const
 {
     return this->_Signed;
 }
 
-int ShrubberyCreationForm::get_Sign_Grade ( void ) const
+int RobotomyRequestForm::get_Sign_Grade ( void ) const
 {
     return(this->_Sign_Grade);
 }
 
-int ShrubberyCreationForm::get_Exec_Grade ( void ) const
+int RobotomyRequestForm::get_Exec_Grade ( void ) const
 {
     return(this->_Exec_Grade);
 }
 
-std::string ShrubberyCreationForm::getName( void ) const
+std::string RobotomyRequestForm::getName( void ) const
 {
     return(this->_name);
 }*/
 
-void ShrubberyCreationForm::beSigned( Bureaucrat const & A )
+void RobotomyRequestForm::beSigned( Bureaucrat const & A )
 {
     this->_Signed = false;
     try

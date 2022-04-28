@@ -1,5 +1,10 @@
 #include "Bureaucrat.hpp"
 
+struct notSigned : std::exception
+{
+  const char* what() const throw() {return "not signed\n";}
+};
+
 struct GradeTooHighException : std::exception 
 {
   const char* what() const throw() {return "Grade Too High Exception\n";}
@@ -114,6 +119,27 @@ std::ostream & operator<<( std::ostream & os, Bureaucrat const & original )
 {
 	os << original.getName() << ", bureaucrat grade " << original.getGrade();
 	return (os);
+}
+
+void Bureaucrat::executeForm( Form const & form)
+{
+	//form.execute(*this);
+	std::cout << _name << " execute " << form.getName() << std::endl;
+try
+    {
+    if (form.getSigned() == true && this->getGrade() <= form.get_Exec_Grade() && this->getGrade() <= form.get_Sign_Grade())
+        form.execute(*this);
+    else if (this->getGrade() > form.get_Exec_Grade() && this->getGrade() > form.get_Sign_Grade())
+        throw GradeTooLowException();
+    else if (this->getGrade() < 1)
+        throw GradeTooHighException();
+    else
+        throw notSigned();
+    }
+    catch (std::exception & e)
+    {
+        std::cout << e.what();
+    }	
 }
 
 Bureaucrat::~Bureaucrat( void )

@@ -1,4 +1,4 @@
-#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 struct GradeTooHighException : std::exception
 {
@@ -14,19 +14,19 @@ struct notSigned : std::exception
 {
   const char* what() const throw() {return "not signed\n";}
 };
-ShrubberyCreationForm::ShrubberyCreationForm( void ) : _Sign_Grade(145), _Exec_Grade(137)
+PresidentialPardonForm::PresidentialPardonForm( void ) : _Sign_Grade(25), _Exec_Grade(5)
 {
 	std::cout << "Constructor called" << std::endl;
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) : _target(target), _Sign_Grade(145), _Exec_Grade(137)
+PresidentialPardonForm::PresidentialPardonForm( std::string target ) : _target(target), _Sign_Grade(25), _Exec_Grade(5)
 {
 	std::cout << "Constructor called" << std::endl;
 	return; 
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{
@@ -45,52 +45,48 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     }
 }
 
-void ShrubberyCreationForm::task( void ) const
+void PresidentialPardonForm::task( void ) const
 {
-	std::string filename;
-	filename += _target;
-	filename += "_shrubbery";
-	std::ofstream _target( filename );
-	_target <<  "        tt                                                                                       tttt                                                                                     tttttt                                                                                      || " ; 
+	std::cout << _target << " a été pardonnée par Zaphod Beeblebrox." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &)
+PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const &)
 {
 	return ;
 }
 
-ShrubberyCreationForm & ShrubberyCreationForm::operator=( ShrubberyCreationForm const & )
+PresidentialPardonForm & PresidentialPardonForm::operator=( PresidentialPardonForm const & )
 {
 	return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm( void )
+PresidentialPardonForm::~PresidentialPardonForm( void )
 {
 	std::cout << "Destructor called" << std::endl;
 	return;
 }
 /*
-bool ShrubberyCreationForm::getSigned( void ) const
+bool PresidentialPardonForm::getSigned( void ) const
 {
     return this->_Signed;
 }
 
-int ShrubberyCreationForm::get_Sign_Grade ( void ) const
+int PresidentialPardonForm::get_Sign_Grade ( void ) const
 {
     return(this->_Sign_Grade);
 }
 
-int ShrubberyCreationForm::get_Exec_Grade ( void ) const
+int PresidentialPardonForm::get_Exec_Grade ( void ) const
 {
     return(this->_Exec_Grade);
 }
 
-std::string ShrubberyCreationForm::getName( void ) const
+std::string PresidentialPardonForm::getName( void ) const
 {
     return(this->_name);
 }*/
 
-void ShrubberyCreationForm::beSigned( Bureaucrat const & A )
+void PresidentialPardonForm::beSigned( Bureaucrat const & A )
 {
     this->_Signed = false;
     try

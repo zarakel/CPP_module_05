@@ -1,27 +1,25 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <string>
 # include <fstream>
 # include <iostream>
 # include <stdexcept>
-# include <cstdlib>
-# include <ctime>
 # include "Form.hpp"
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public Form
+class PresidentialPardonForm : public Form
 {
 	public:
-		RobotomyRequestForm( void );
-		RobotomyRequestForm( std::string target );
+		PresidentialPardonForm( void );
+		PresidentialPardonForm( std::string target );
 		void	task( void ) const;
-		RobotomyRequestForm( RobotomyRequestForm const & );
+		PresidentialPardonForm( PresidentialPardonForm const & );
 		void execute(Bureaucrat const & executor) const;
-		~RobotomyRequestForm( void );
+		~PresidentialPardonForm( void );
 
-		RobotomyRequestForm & operator=( RobotomyRequestForm const & cp );
+		PresidentialPardonForm & operator=( PresidentialPardonForm const & cp );
 
         void beSigned( Bureaucrat const & A );
       /*  bool getSigned( void ) const;
