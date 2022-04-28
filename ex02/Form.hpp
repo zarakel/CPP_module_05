@@ -16,12 +16,14 @@ class Form
 		Form( Form const &, std::string const name,  int const Sign_Grade, int const Exec_Grade);
 		~Form( void );
 
-		virtual Form & operator=( Form const & ) = 0;
-		virtual void beSigned( Bureaucrat const & A ) = 0;
-		virtual bool getSigned( void ) const = 0;
-		virtual int get_Sign_Grade( void ) const = 0 ;
-		virtual int get_Exec_Grade( void ) const = 0 ;
-		virtual std::string getName( void ) const = 0;
+		virtual void beSigned( Bureaucrat const & A ) = 0 ;
+		virtual bool getSigned( void ) const ;
+		virtual int get_Sign_Grade( void ) const ;
+		virtual int get_Exec_Grade( void ) const ;
+		virtual std::string getName( void ) const ;
+		virtual void execute(Bureaucrat const & executor) const = 0 ;
+		virtual void task( void ) const ;
+		virtual Form & operator=( Form const & ) ;
 
 	private:
 		bool _Signed;

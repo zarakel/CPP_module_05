@@ -1,24 +1,36 @@
-#ifndef ROBOTMYREQUESTFORM_HPP
-# define ROBOTMYREQUESTFORM_HPP
+#ifndef SHEUBBERYCREATIONFORM_HPP
+# define SHEUBBERYCREATIONFORM_HPP
 
 # include <string>
+# include <fstream>
 # include <iostream>
 # include <stdexcept>
 # include "Form.hpp"
 
-class RobotomyRequestForm : public Form
+class Bureaucrat;
+
+class ShrubberyCreationForm : public Form
 {
 	public:
-		RobotomyRequestForm( void );
-		RobotomyRequestForm ( std::string target );
-		RobotomyRequestForm( RobotomyRequestForm const & );
-		~RobotomyRequestForm( void );
+		ShrubberyCreationForm( void );
+		ShrubberyCreationForm( std::string target );
+		void	task( void ) const;
+		ShrubberyCreationForm( ShrubberyCreationForm const & );
+		void execute(Bureaucrat const & executor) const;
+		~ShrubberyCreationForm( void );
 
-		RobotomyRequestForm & operator=( RobotomyRequestForm const & cp );
+		ShrubberyCreationForm & operator=( ShrubberyCreationForm const & cp );
+
+        void beSigned( Bureaucrat const & A );
+      /*  bool getSigned( void ) const;
+        int get_Sign_Grade( void ) const;
+        int get_Exec_Grade( void ) const;
+        std::string getName( void ) const;*/
 	private:
-		std::string _target;
-		int _Sign_Grade;
-		int _Exec_Grade;
+        std::string _target;
+        int _Sign_Grade;
+        int _Exec_Grade;
+		bool _Signed;
 	
 };	
 

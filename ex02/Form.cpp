@@ -14,6 +14,7 @@ Form::Form( void ) : _Signed(false), _Sign_Grade(0), _Exec_Grade(0), _name("defa
 {
 	std::cout << "Constructor called" << std::endl;
 	
+	/*std::cout <<  << std::endl;
 	try
 	{
 		if ( this->_Exec_Grade < 1 || this->_Sign_Grade < 1)
@@ -24,7 +25,7 @@ Form::Form( void ) : _Signed(false), _Sign_Grade(0), _Exec_Grade(0), _name("defa
 	catch (std::exception & e)
 	{
 		std::cout << e.what();
-	}
+	}*/
 	return;
 }
 
@@ -56,7 +57,7 @@ Form & Form::operator=( Form const & )
 	return *this;
 }
 
-void Form::beSigned( Bureaucrat const & A )
+/*void Form::beSigned( Bureaucrat const & A )
 {
 	this->_Signed = false;
 	try
@@ -72,7 +73,7 @@ void Form::beSigned( Bureaucrat const & A )
 	{
 		std::cout << e.what();
 	}
-}
+}*/
 
 bool Form::getSigned( void ) const
 {
@@ -101,6 +102,20 @@ std::ostream & operator<<( std::ostream & os, Form const & original )
 		<< original.get_Exec_Grade() << ", Signed : "
 		<< original.getSigned();
 	return (os);
+}
+
+void Form::execute(Bureaucrat const & executor) const
+{
+	if (this->_Signed == true && executor.getGrade() >= this->_Sign_Grade )
+		this->task();
+
+	else
+		std::cout << "grade insuffisant " << std::endl;
+}
+
+void Form::task(void) const 
+{
+	return ;
 }
 
 Form::~Form( void )
