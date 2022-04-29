@@ -1,4 +1,4 @@
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 struct GradeTooHighException : std::exception
 {
@@ -15,24 +15,24 @@ struct notSigned : std::exception
   const char* what() const throw() {return "not signed\n";}
 };
 
-RobotomyRequestForm::RobotomyRequestForm( void ) : Form() 
+PresidentialPardonForm::PresidentialPardonForm( void ) : Form() 
 {
 	std::cout << "Constructor called" << std::endl;
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( std::string target ) : Form(target, 75, 45)
+PresidentialPardonForm::PresidentialPardonForm( std::string target ) : Form(target, 25, 5)
 {
 	std::cout << "Constructor called" << std::endl;
 	return; 
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{
 		if (this->getSigned() == true && executor.getGrade() <= this->get_Exec_Grade() && executor.getGrade() <= this->get_Sign_Grade())
-        		this->task();
+			this->task();
 		else if (executor.getGrade() > this->get_Exec_Grade() && executor.getGrade() > this->get_Sign_Grade())
 			throw GradeTooLowException();
 		else if (executor.getGrade() < 1)
@@ -46,26 +46,22 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	}
 }
 
-void RobotomyRequestForm::task( void ) const
+void PresidentialPardonForm::task( void ) const
 {
-	srand(time(0));
-	if (rand() % 2)
-		std::cout << "BRUIT DE PERCEUSE" << std::endl << this->getName() << " a été robotomisé" << std::endl;
-	else
-		std::cout << "Opération échouée" << std::endl;
+	std::cout << this->getName() << " a été pardonnée par Zaphod Beeblebrox." << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &) 
+PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const &)
 {
 	return ;
 }
 
-RobotomyRequestForm & RobotomyRequestForm::operator=( RobotomyRequestForm const & )
+PresidentialPardonForm & PresidentialPardonForm::operator=( PresidentialPardonForm const & )
 {
 	return *this;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm( void )
+PresidentialPardonForm::~PresidentialPardonForm( void )
 {
 	std::cout << "Destructor called" << std::endl;
 	return;

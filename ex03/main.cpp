@@ -2,6 +2,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
@@ -9,7 +10,7 @@ int main()
 	Bureaucrat c("jack", 5);
 	Bureaucrat d("jack junior", 6);
 
-	RobotomyRequestForm doc("chichi");
+/*	RobotomyRequestForm doc("chichi");
 	PresidentialPardonForm moc("jerome");
 	ShrubberyCreationForm loc("Titouan");
 
@@ -26,5 +27,11 @@ int main()
 	c.executeForm(loc);
 
 	moc.beSigned(b);
-	b.executeForm(moc);
+	b.executeForm(moc);*/
+	Intern e;
+	Form * D;
+	D = e.makeForm("ShrubberyCreationForm", "Nouma");
+	std::cout << D->get_Sign_Grade() << std::endl;
+	D->resetSigned();
+	
 }

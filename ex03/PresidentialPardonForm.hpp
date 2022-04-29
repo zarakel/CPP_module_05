@@ -14,12 +14,13 @@ class PresidentialPardonForm : public Form
 	public:
 		PresidentialPardonForm( void );
 		PresidentialPardonForm( std::string target );
-		void	task( void ) const;
 		PresidentialPardonForm( PresidentialPardonForm const & );
-		void execute(Bureaucrat const & executor) const;
 		~PresidentialPardonForm( void );
 
 		PresidentialPardonForm & operator=( PresidentialPardonForm const & cp );
+
+		void execute(Bureaucrat const & executor) const;
+		void	task( void ) const;
 };	
 
 #endif

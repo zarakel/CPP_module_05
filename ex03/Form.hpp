@@ -14,7 +14,7 @@ class Form
 		Form( void );
 		Form( std::string const name, int const Sign_Grade, int const Exec_Grade);
 		Form( Form const &, std::string const name,  int const Sign_Grade, int const Exec_Grade);
-		~Form( void );
+		virtual ~Form( void );
 
 		virtual void beSigned( Bureaucrat const & A );
 		virtual bool getSigned( void ) const ;
