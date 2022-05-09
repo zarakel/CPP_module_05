@@ -6,7 +6,6 @@
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include "Form.hpp"
-# include <algorithm>
 
 class ShrubberyCreationForm;
 
